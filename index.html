@@ -1,0 +1,969 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Nour | Portfolio</title>
+
+    <link href="css/bootstrap.css" rel="stylesheet">
+
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <style>
+        :root {
+            --blue: #395682;
+            --blue-dark: #091d3a;
+            --blue-light: #E7F1FF;
+            --cyan: #337a89;
+            --green: #198754;
+            --red: #DC3545;
+            --yellow: #FFC107;
+            --gray: #6C757D;
+            --gray-light: #E9ECEF;
+            --white: #FFFFFF;
+            --background: #FCFDFE;
+            --black: #121417;
+            --dark: #212529;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 80px;
+        }
+
+        body {
+            background-color: var(--background) !important;
+            color: var(--black);
+            font-family: Arial, Helvetica, sans-serif;
+            line-height: 1.7;
+        }
+
+        /* Navbar */
+
+        .navbar {
+            background-color: var(--dark) !important;
+            padding: 15px 0;
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.10);
+        }
+
+        .navbar-brand {
+            color: var(--white) !important;
+            letter-spacing: 0.4px;
+        }
+
+        .navbar-brand span {
+            color: var(--cyan) !important;
+        }
+
+        .navbar .nav-link {
+            color: #E9ECEF !important;
+            margin-left: 10px;
+            transition: color 0.3s ease;
+        }
+
+        .navbar .nav-link:hover,
+        .navbar .nav-link:focus {
+            color: var(--cyan) !important;
+        }
+
+        .navbar-toggler {
+            border-color: var(--cyan);
+        }
+
+        /* Hero */
+
+        #home {
+            background: linear-gradient(
+                135deg,
+                #162741,
+                #0b2855
+            ) !important;
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        #home .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        #home .badge {
+            background-color: var(--white) !important;
+            color: var(--blue-dark) !important;
+            font-weight: 600;
+            letter-spacing: 0.3px;
+        }
+
+        #home h1 span,
+        #home h2 {
+            color: #86dbff !important;
+        }
+
+        #home .lead {
+            color: #F1F7FF !important;
+            line-height: 1.9;
+        }
+
+        #home img {
+            width: 230px;
+            height: 230px;
+            object-fit: cover;
+            border-color: var(--cyan) !important;
+            padding: 4px;
+            transition: transform 0.3s ease;
+        }
+
+        #home img:hover {
+            transform: translateY(-4px);
+        }
+
+        /* Buttons */
+
+        .btn {
+            border-radius: 8px;
+            transition: all 0.25s ease;
+        }
+
+        .btn-primary,
+        .btn-info {
+            background-color: var(--blue) !important;
+            border-color: var(--blue) !important;
+            color: var(--white) !important;
+        }
+
+        .btn-primary:hover,
+        .btn-info:hover {
+            background-color: var(--blue-dark) !important;
+            border-color: var(--blue-dark) !important;
+            transform: translateY(-2px);
+        }
+
+        .btn-success {
+            background-color: var(--green) !important;
+            border-color: var(--green) !important;
+            color: var(--white) !important;
+        }
+
+        .btn-danger {
+            background-color: var(--red) !important;
+            border-color: var(--red) !important;
+            color: var(--white) !important;
+        }
+
+        .btn-warning {
+            background-color: var(--yellow) !important;
+            border-color: var(--yellow) !important;
+            color: var(--black) !important;
+        }
+
+        .btn-outline-light {
+            border-color: var(--white) !important;
+            color: var(--white) !important;
+        }
+
+        .btn-outline-light:hover {
+            background-color: var(--white) !important;
+            color: var(--blue-dark) !important;
+        }
+
+        .btn-outline-primary {
+            color: var(--blue) !important;
+            border-color: var(--blue) !important;
+        }
+
+        .btn-outline-primary:hover {
+            background-color: var(--blue) !important;
+            color: var(--white) !important;
+        }
+
+        /* Section headings */
+
+        section:not(#home):not(#contact) {
+            padding-top: 75px !important;
+            padding-bottom: 75px !important;
+        }
+
+        section h2 span {
+            color: var(--blue) !important;
+        }
+
+        section h2 {
+            color: var(--black);
+        }
+
+        .bg-primary {
+            background-color: var(--blue) !important;
+        }
+
+        .text-primary {
+            color: var(--blue) !important;
+        }
+
+        .text-secondary {
+            color: var(--gray) !important;
+        }
+
+        .text-info {
+            color: #06667a !important;
+        }
+
+        .text-success {
+            color: var(--green) !important;
+        }
+
+        .text-danger {
+            color: var(--red) !important;
+        }
+
+        .text-warning {
+            color: #997404 !important;
+        }
+
+        /* Cards */
+
+        .card {
+            background-color: var(--white);
+            border: 1px solid #E5EAF0 !important;
+            border-radius: 14px;
+            overflow: hidden;
+            transition: transform 0.25s ease,
+                        box-shadow 0.25s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 28px rgba(13, 110, 253, 0.10) !important;
+        }
+
+        .card-body {
+            padding: 25px;
+        }
+
+        .card h4,
+        .card h5 {
+            color: var(--black);
+        }
+
+        .card-header {
+            background-color: var(--blue) !important;
+            color: var(--white) !important;
+            border-bottom: 3px solid var(--cyan);
+        }
+
+        /* Skills */
+
+        #skills {
+            background-color: #F1F6FC !important;
+        }
+
+        #skills .card {
+            height: 100%;
+        }
+
+        #skills .bi {
+            color: var(--blue) !important;
+        }
+
+        .badge.bg-danger {
+            background-color: var(--red) !important;
+            color: var(--white) !important;
+        }
+
+        .badge.bg-success {
+            background-color: var(--green) !important;
+            color: var(--white) !important;
+        }
+
+        .badge.bg-warning {
+            background-color: var(--yellow) !important;
+            color: var(--black) !important;
+        }
+
+        .badge.bg-info {
+            background-color: var(--cyan) !important;
+            color: var(--black) !important;
+        }
+
+        .badge.bg-primary {
+            background-color: var(--blue) !important;
+            color: var(--white) !important;
+        }
+
+        .badge.bg-dark {
+            background-color: var(--dark) !important;
+            color: var(--white) !important;
+        }
+
+        /* Projects */
+
+        #projects {
+            background-color: var(--background);
+        }
+
+        #projects .card-img-top {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            background-color: var(--gray-light);
+        }
+
+        #projects .card-body {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        #projects .card-body p {
+            flex-grow: 1;
+        }
+
+        /* Contact */
+
+        #contact {
+            background-color: var(--dark) !important;
+            color: var(--white);
+            padding-top: 70px !important;
+            padding-bottom: 70px !important;
+        }
+
+        #contact h2 {
+            color: var(--white);
+        }
+
+        #contact h2 span {
+            color: var(--cyan) !important;
+        }
+
+        #contact .card {
+            background-color: var(--white);
+        }
+
+        #contact .form-control {
+            border: 1px solid #D9E0E8;
+            border-radius: 8px;
+            padding: 12px;
+            color: var(--black);
+        }
+
+        #contact .form-control:focus {
+            border-color: var(--blue);
+            box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.18);
+        }
+
+        #contact .form-control::placeholder {
+            color: #858D95;
+        }
+
+        /* Footer */
+
+        footer {
+            background-color: #121417 !important;
+            color: var(--white);
+            border-top: 3px solid var(--blue);
+        }
+
+        footer h5 {
+            color: var(--cyan);
+        }
+
+        /* Responsive */
+
+        @media (max-width: 767px) {
+            #home .container {
+                padding-top: 45px !important;
+                padding-bottom: 45px !important;
+            }
+
+            #home h1 {
+                font-size: 2.5rem;
+            }
+
+            #home .lead {
+                font-size: 1rem;
+            }
+
+            #home img {
+                width: 200px;
+                height: 200px;
+            }
+
+            section:not(#home):not(#contact) {
+                padding-top: 50px !important;
+                padding-bottom: 50px !important;
+            }
+
+            .card-body {
+                padding: 20px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+
+            *,
+            *::before,
+            *::after {
+                transition: none !important;
+            }
+        }/* Professional Portfolio Colors */
+
+:root {
+  --main-dark: #101D2B;
+  --main-blue: #719CB6;
+  --soft-bg: #F1F5F8;
+  --main-text: #20374A;
+}
+
+/* Page Background */
+body,
+.bg-light {
+  background-color: var(--soft-bg) !important;
+  color: var(--main-text);
+}
+
+/* Navigation and Dark Sections */
+.navbar,
+.bg-dark {
+  background-color: var(--main-dark) !important;
+}
+
+/* Main Accent Text */
+.text-info,
+.text-primary {
+  color: var(--main-blue) !important;
+}
+
+/* Section Headings */
+section:not(#home) h2,
+section:not(#home) h3 {
+  color: var(--main-text);
+}
+
+/* Cards */
+.card {
+  background-color: #FFFFFF !important;
+  border: 1px solid #DCE5EB !important;
+  border-radius: 12px;
+  box-shadow: 0 5px 18px rgba(16,29,43,0.06);
+}
+
+/* Main Buttons */
+.btn-primary,
+.btn-info {
+  background-color: var(--main-blue) !important;
+  border-color: var(--main-blue) !important;
+  color: #101D2B !important;
+}
+
+/* Outline Buttons */
+.btn-outline-primary,
+.btn-outline-info {
+  color: #456F89 !important;
+  border-color: #719CB6 !important;
+}
+
+/* Button Hover */
+.btn-outline-primary:hover,
+.btn-outline-info:hover {
+  background-color: #719CB6 !important;
+  color: #101D2B !important;
+}
+
+/* Badges */
+.badge.bg-primary,
+.badge.bg-success,
+.badge.bg-info {
+  background-color: #557B91 !important;
+  color: white !important;
+}
+
+/* Project Preview Colors */
+#projects .bg-primary {
+  background-color: #34566E !important;
+}
+
+#projects .bg-info,
+#projects .bg-success {
+  background-color: #7299AC !important;
+}
+
+/* Image Borders */
+.border-info,
+.border-primary {
+  border-color: #719CB6 !important;
+}
+
+        
+    </style>
+</head>
+
+<body>
+
+<!-- Navbar -->
+
+<nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+    <div class="container">
+
+        <a class="navbar-brand fw-bold" href="#home">
+            <span>Nour</span> Portfolio
+        </a>
+
+        <button class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navMenu"
+                aria-controls="navMenu"
+                aria-expanded="false"
+                aria-label="Toggle navigation">
+
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navMenu">
+            <div class="navbar-nav ms-auto">
+                <a href="#home" class="nav-link">Home</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#skills" class="nav-link">Skills</a>
+                <a href="#projects" class="nav-link">Projects</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </div>
+        </div>
+
+    </div>
+</nav>
+
+<!-- Home -->
+
+<section id="home" class="text-white py-5">
+    <div class="container py-5">
+
+        <div class="row align-items-center">
+
+            <div class="col-md-7 text-center text-md-start">
+
+                <span class="badge mb-3 p-2">
+                    Welcome To My Portfolio
+                </span>
+
+                <h1 class="display-4 fw-bold">
+                    Hi, I'm <span>Nour</span>
+                </h1>
+
+                <h2 class="h3 mb-3">
+                    Back-End Developer in Progress
+                </h2>
+
+                <p class="lead">
+                    I'm a Business Information Systems student learning Back-End Development, with a passion for UI/UX design, photography, and videography. I love combining technology and creativity to explore new ideas and create meaningful digital experiences.
+                </p>
+
+                <a href="#projects"
+                   class="btn btn-info btn-lg me-2 mb-2">
+
+                    <i class="bi bi-briefcase me-1"></i>
+                    My Projects
+                </a>
+
+                <a href="#contact"
+                   class="btn btn-outline-light btn-lg mb-2">
+
+                    Contact Me
+                </a>
+
+            </div>
+
+            <div class="col-md-5 text-center mt-4 mt-md-0">
+
+                <img src="assets/img/nouur2.jpeg"
+                     alt="Nour Profile"
+                     width="230"
+                     height="230"
+                     class="rounded-circle border border-4 shadow">
+
+                <div class="mt-3">
+                    <span class="badge p-2">
+                        <i class="bi bi-code-slash me-1"></i>
+                        Creative Developer
+                    </span>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- About -->
+
+<section id="about" class="py-5">
+    <div class="container py-3">
+
+        <div class="text-center mb-5">
+
+            <h2 class="fw-bold">
+                About <span>Me</span>
+            </h2>
+
+            <p class="text-secondary">
+                Get to know me better
+            </p>
+
+        </div>
+
+        <div class="row g-4 align-items-stretch">
+
+            <div class="col-md-6">
+                <div class="card shadow-sm h-100">
+
+                    <div class="card-body p-4">
+
+                        <div class="display-6 mb-3 text-primary">
+                            <i class="bi bi-person-workspace"></i>
+                        </div>
+
+                        <h4 class="fw-bold">Who Am I?</h4>
+
+<p>
+    I'm a fourth-year Business Information Systems student
+    interested in technology, creative design, and digital media.
+</p>
+
+<p>
+    I'm currently learning Back-End Development while exploring
+    UI/UX design, photography, and videography. My goal is to
+    develop my technical and creative skills through continuous
+    learning and practical projects.
+</p>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="card shadow-sm h-100">
+
+                    <div class="card-header p-3">
+                        <h5 class="mb-0">
+                            <i class="bi bi-person-lines-fill me-2"></i>
+                            Personal Information
+                        </h5>
+                    </div>
+
+                    <div class="card-body">
+
+                        <p>
+                            <i class="bi bi-person-fill text-primary me-2"></i>
+                            <strong>Name:</strong> Nour
+                        </p>
+
+                        <p>
+                            <i class="bi bi-envelope-fill text-primary me-2"></i>
+                            <strong>Email:</strong> nourghazi297@gmail.com
+                        </p>
+
+                        <p>
+                            <i class="bi bi-geo-alt-fill text-primary me-2"></i>
+                            <strong>Location:</strong> Egypt
+                        </p>
+
+                        <p class="mb-0">
+                            <i class="bi bi-code-slash text-primary me-2"></i>
+                            <strong>Role:</strong> Back-End Development & UI/UX Design.
+                        </p>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- Skills -->
+
+<section id="skills" class="py-5">
+    <div class="container py-3">
+
+        <div class="text-center mb-5">
+
+            <h2 class="fw-bold">
+                My <span>Skills</span>
+            </h2>
+
+            <p class="text-secondary">
+                Technologies I use to build websites
+            </p>
+
+        </div>
+
+        <div class="row g-4 text-center">
+
+            <div class="col-6 col-md-3">
+                <div class="card shadow-sm h-100">
+
+                    <div class="card-body p-4">
+
+                        <i class="bi bi-filetype-html display-4"></i>
+
+                        <h5 class="fw-bold mt-3">HTML</h5>
+
+                        <span class="badge bg-primary">Structure</span>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-6 col-md-3">
+                <div class="card shadow-sm h-100">
+
+                    <div class="card-body p-4">
+
+                        <i class="bi bi-filetype-css display-4"></i>
+
+                        <h5 class="fw-bold mt-3">CSS</h5>
+
+                        <span class="badge bg-primary">Styling</span>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-6 col-md-3">
+                <div class="card shadow-sm h-100">
+
+                    <div class="card-body p-4">
+
+                        <i class="bi bi-bootstrap-fill display-4"></i>
+
+                        <h5 class="fw-bold mt-3">Bootstrap</h5>
+
+                        <span class="badge bg-info">Responsive</span>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-6 col-md-3">
+                <div class="card shadow-sm h-100">
+
+                    <div class="card-body p-4">
+
+                        <i class="bi bi-filetype-js display-4"></i>
+
+                        <h5 class="fw-bold mt-3">JavaScript</h5>
+
+                        <span class="badge bg-warning">Interactive</span>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- Projects -->
+
+<section id="projects" class="py-5">
+    <div class="container py-3">
+
+        <div class="text-center mb-5">
+
+            <h2 class="fw-bold">
+                My <span>Projects</span>
+            </h2>
+
+            <p class="text-secondary">
+                Some projects I have worked on
+            </p>
+
+        </div>
+
+        <div class="row g-4">
+
+            <div class="col-md-4">
+                <div class="card shadow-sm h-100">
+
+                    <img src="assets/img/back end.jpeg"
+     class="card-img-top"
+     alt="Back-End Development"
+     style="height: 230px; object-fit: cover;">
+
+                    <div class="card-body">
+
+                        <span class="badge bg-success mb-2">Programming</span>
+
+                        <h5 class="fw-bold">Back-End Development</h5>
+
+                        <p class="text-secondary">
+                            Exploring Back-End Development and building programming Skills.
+                        </p>
+
+                        <a href="#" class="btn btn-outline-primary">
+                            View Project
+                            <i class="bi bi-arrow-right ms-1"></i>
+                        </a>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card shadow-sm h-100">
+
+                    <img src="assets/img/ui ux.jpeg"
+     class="card-img-top"
+     alt="UI/UX Design"
+     style="height: 230px; object-fit: cover;">
+
+                    <div class="card-body">
+
+                        <span class="badge bg-primary mb-2">Portfolio</span>
+
+                        <h5 class="fw-bold">UI/UX Design</h5>
+
+                        <p class="text-secondary">
+                            Exploring User Interface design and creating intuitive digital experiences.
+                        </p>
+
+                        <a href="#" class="btn btn-outline-primary">
+                            View Project
+                            <i class="bi bi-arrow-right ms-1"></i>
+                        </a>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card shadow-sm h-100">
+
+                    <img src="assets/img/photograph.jpeg"
+     class="card-img-top"
+     alt="Photography"
+     style="height: 230px; object-fit: cover;">
+
+                    <div class="card-body">
+
+                        <span class="badge bg-info mb-2">photography</span>
+
+                        <h5 class="fw-bold">Photography</h5>
+
+                        <p class="text-secondary">
+                            capturing meaningful moments through photography and storytelling.
+                        </p>
+
+                        <a href="#" class="btn btn-outline-primary">
+                            View Project
+                            <i class="bi bi-arrow-right ms-1"></i>
+                        </a>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- Contact -->
+
+<section id="contact" class="text-white py-5">
+    <div class="container py-3">
+
+        <div class="text-center mb-5">
+
+            <h2 class="fw-bold">
+                Contact <span>Me</span>
+            </h2>
+
+            <p class="text-white-50">
+                Have a project in mind? Let's talk.
+            </p>
+
+        </div>
+
+        <div class="row justify-content-center">
+
+            <div class="col-md-7 col-lg-6">
+                <div class="card shadow">
+
+                    <div class="card-body p-4">
+
+                        <form>
+
+                            <label class="form-label text-dark">
+                                Your Name
+                            </label>
+
+                            <input type="text"
+                                   class="form-control mb-3"
+                                   placeholder="Enter your name">
+
+                            <label class="form-label text-dark">
+                                Your Email
+                            </label>
+
+                            <input type="email"
+                                   class="form-control mb-3"
+                                   placeholder="name@example.com">
+
+                            <label class="form-label text-dark">
+                                Your Message
+                            </label>
+
+                            <textarea class="form-control mb-3"
+                                      rows="4"
+                                      placeholder="Write your message"></textarea>
+
+                            <button type="button"
+                                    class="btn btn-primary w-100">
+
+                                <i class="bi bi-send me-2"></i>
+                                Send Message
+
+                            </button>
+
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+
+<footer class="text-white text-center py-4">
+
+    <div class="container">
+
+        <h5 class="fw-bold">
+            Nour Portfolio
+        </h5>
+
+        <p class="text-white-50 mb-2">
+            Building ideas into websites.
+        </p>
+
+        <p class="mb-0">
+            &copy; 2026 Nour. All Rights Reserved.
+        </p>
+
+    </div>
+
+</footer>
+
+<script src="js/bootstrap.js"></script>
+
+</body>
+</html>
